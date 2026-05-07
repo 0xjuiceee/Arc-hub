@@ -379,13 +379,7 @@ function Footer() {
           rel="noreferrer"
           className="group inline-flex items-center gap-3 rounded-full border border-border bg-card/50 pl-2 pr-4 py-2 hover:border-primary/50 transition"
         >
-          <span
-            className="w-7 h-7 rounded-full flex items-center justify-center"
-            style={{ background: "var(--gradient-arc)" }}
-          >
-            <Bird className="w-3.5 h-3.5 text-primary-foreground" />
-          </span>
-          <span className="text-sm">
+          <span className="text-sm pl-2">
             Built by{" "}
             <span
               className="font-display font-bold text-base bg-clip-text text-transparent"
