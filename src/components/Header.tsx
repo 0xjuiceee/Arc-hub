@@ -23,7 +23,7 @@ export const Header = () => {
             <Link to="/terminal" className="flex items-center gap-2 group">
               <img src={logoImg} alt="Arc-hub" className="w-7 h-7 rounded-lg object-cover" />
               <span className="font-bold text-lg text-foreground">
-                Arc<span className="text-primary">Pad</span>
+                <span className="text-primary">Arc</span>-hub
               </span>
             </Link>
 

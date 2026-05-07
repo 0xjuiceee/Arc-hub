@@ -199,7 +199,7 @@ const Landing = () => {
         <div className="flex items-center gap-2">
           <img src={logoImg} alt="Arc-hub" className="h-8 w-8 rounded-lg object-cover" />
           <span className="text-xl font-bold text-foreground">
-            Arc<span className="text-primary">Pad</span>
+            <span className="text-primary">Arc</span>-hub
           </span>
         </div>
         <Link
