@@ -262,7 +262,7 @@ const Landing = () => {
       </section>
 
       <footer className="relative z-10 border-t border-border py-6 text-center">
-        <p className="text-xs text-muted-foreground">© 2026 Arc-hub — Built on Arc Network Testnet</p>
+        <p className="text-xs text-muted-foreground">© 2026 Arc-hub — Built on Arc Network Testnet · build by 0xjuiceee</p>
       </footer>
     </div>
   );
