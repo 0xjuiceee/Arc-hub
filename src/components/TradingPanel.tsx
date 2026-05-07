@@ -27,7 +27,7 @@ export const TradingPanel = ({
   const [loading, setLoading] = useState(false);
   const [slippage, setSlippage] = useState('5');
   const [tokenBalance, setTokenBalance] = useState('0');
-  const [ritualBalance, setRitualBalance] = useState('0');
+  const [arcBalance, setArcBalance] = useState('0');
   const { signer, address, isConnected, isCorrectChain, provider } = useWallet();
 
   // Fetch balances
@@ -39,7 +39,7 @@ export const TradingPanel = ({
         const bal = await contract.balanceOf(address);
         setTokenBalance(ethers.formatEther(bal));
         const ethBal = await provider.getBalance(address);
-        setRitualBalance(ethers.formatEther(ethBal));
+        setArcBalance(ethers.formatEther(ethBal));
       } catch {
         /* ignore */
       }
@@ -55,7 +55,7 @@ export const TradingPanel = ({
     ? (price > 0 ? (amountNum / price).toFixed(2) : '0')
     : (amountNum * price).toFixed(6);
 
-  const syncOnChainData = async (contract: ethers.Contract, txHash: string, tradeType: string, tokensTraded: string, ritualAmount: string) => {
+  const syncOnChainData = async (contract: ethers.Contract, txHash: string, tradeType: string, tokensTraded: string, arcAmount: string) => {
     try {
       const onChain = await readTokenOnChainData(contract);
       await supabase.from('tokens').update({
@@ -75,7 +75,7 @@ export const TradingPanel = ({
         type: tradeType,
         amount_tokens: tokensTraded,
         price: onChain.currentPrice,
-        total_ritual: ritualAmount,
+        total_arc: arcAmount,
         tx_hash: txHash,
       });
     } catch (err) {
@@ -92,8 +92,8 @@ export const TradingPanel = ({
       const iface = new ethers.Interface(MEMETOKEN_ABI);
 
       if (mode === 'buy') {
-        const ritualAmount = ethers.parseEther(amount);
-        const tx = await contract.buy({ value: ritualAmount });
+        const arcAmount = ethers.parseEther(amount);
+        const tx = await contract.buy({ value: arcAmount });
         const receipt = await tx.wait();
 
         let tokensBought = '0';
@@ -116,20 +116,20 @@ export const TradingPanel = ({
         const tx = await contract.sell(tokenAmount);
         const receipt = await tx.wait();
 
-        let ritualReceived = '0';
+        let arcReceived = '0';
         for (const log of receipt.logs) {
           try {
             const parsed = iface.parseLog({ topics: log.topics as string[], data: log.data });
             if (parsed && parsed.name === 'TokensSold') {
-              ritualReceived = ethers.formatEther(parsed.args.revenue);
+              arcReceived = ethers.formatEther(parsed.args.revenue);
               break;
             }
           } catch { /* skip */ }
         }
 
-        await syncOnChainData(contract, receipt.hash, 'sell', amount, ritualReceived);
+        await syncOnChainData(contract, receipt.hash, 'sell', amount, arcReceived);
         toast.success('💰 Sell Successful!', {
-          description: `Sold ${amount} ${tokenTicker} for ${ritualReceived} aUSD`,
+          description: `Sold ${amount} ${tokenTicker} for ${arcReceived} aUSD`,
         });
       }
 
@@ -143,7 +143,7 @@ export const TradingPanel = ({
   };
 
   const setPercentage = (pct: number) => {
-    const bal = mode === 'sell' ? parseFloat(tokenBalance) : parseFloat(ritualBalance);
+    const bal = mode === 'sell' ? parseFloat(tokenBalance) : parseFloat(arcBalance);
     if (bal <= 0) return;
     const val = (bal * pct) / 100;
     setAmount(mode === 'sell' ? val.toFixed(0) : val.toFixed(6));
@@ -151,7 +151,7 @@ export const TradingPanel = ({
 
   const displayBalance = mode === 'sell'
     ? parseFloat(tokenBalance).toFixed(2)
-    : parseFloat(ritualBalance).toFixed(4);
+    : parseFloat(arcBalance).toFixed(4);
   const balanceUnit = mode === 'sell' ? tokenTicker : 'aUSD';
 
   return (

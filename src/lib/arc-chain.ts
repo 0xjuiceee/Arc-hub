@@ -16,4 +16,3 @@ export const formatArc = (v: string | bigint, d = 4) => {
   const n = typeof v === 'string' ? parseFloat(v) : Number(v) / 1e18;
   return n.toFixed(d);
 };
-export const formatRitual = formatArc; // alias for compatibility

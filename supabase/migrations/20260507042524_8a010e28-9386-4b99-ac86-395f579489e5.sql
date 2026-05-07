@@ -1,0 +1,1 @@
+ALTER TABLE public.trades RENAME COLUMN total_ritual TO total_arc;

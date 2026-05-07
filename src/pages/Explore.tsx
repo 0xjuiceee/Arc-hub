@@ -5,7 +5,7 @@ import { TokenCard, TokenCardData } from '@/components/TokenCard';
 import { Input } from '@/components/ui/input';
 import { Search, Flame, Clock, TrendingUp, BarChart3, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
-import { formatRitual, shortenAddress } from '@/lib/arc-chain';
+import { formatArc, shortenAddress } from '@/lib/arc-chain';
 import { useRef } from 'react';
 
 type SortTab = 'latest' | 'mcap' | 'newest' | 'oldest';
@@ -109,7 +109,7 @@ const Explore = () => {
                     <div className="text-xs font-mono font-semibold text-primary">{token.ticker}</div>
                     <div className="text-sm font-medium text-foreground truncate">{token.name}</div>
                     <div className="text-[11px] font-mono text-muted-foreground">
-                      MCap:<span className="text-foreground ml-0.5">${formatRitual(token.market_cap, 1)}</span>
+                      MCap:<span className="text-foreground ml-0.5">${formatArc(token.market_cap, 1)}</span>
                     </div>
                   </div>
                 </Link>

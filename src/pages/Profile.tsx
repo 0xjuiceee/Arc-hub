@@ -82,10 +82,10 @@ const Profile = () => {
         const existing = tokenMap.get(t.token_address) || { buys: 0, sells: 0, totalSpent: 0, totalReceived: 0 };
         if (t.type === 'buy') {
           existing.buys++;
-          existing.totalSpent += parseFloat(t.total_ritual);
+          existing.totalSpent += parseFloat(t.total_arc);
         } else {
           existing.sells++;
-          existing.totalReceived += parseFloat(t.total_ritual);
+          existing.totalReceived += parseFloat(t.total_arc);
         }
         tokenMap.set(t.token_address, existing);
       });
@@ -546,7 +546,7 @@ function TradeHistoryTab({ trades, tokenMap, isLoading }: { trades: any[]; token
                   </td>
                   <td className="px-5 py-3 text-right font-mono text-sm">{trade.amount_tokens}</td>
                   <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(trade.price).toFixed(8)}</td>
-                  <td className="px-5 py-3 text-right font-mono text-sm">{trade.total_ritual} aUSD</td>
+                  <td className="px-5 py-3 text-right font-mono text-sm">{trade.total_arc} aUSD</td>
                   <td className="px-5 py-3 text-right">
                     {trade.tx_hash ? (
                       <a href={getExplorerTxUrl(trade.tx_hash)} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">
