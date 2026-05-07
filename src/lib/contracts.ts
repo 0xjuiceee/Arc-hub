@@ -1,5 +1,5 @@
 // ============================================================
-// RitualPad — Contract interfaces for Factory + MemeToken
+// Arc-hub — Contract interfaces for Factory + MemeToken
 // ============================================================
 // The Factory contract is deployed via Remix IDE and referenced
 // here by address. Each MemeToken is an ERC20 with a linear
