@@ -144,7 +144,7 @@ export type Database = {
           id: string
           price: string
           token_address: string
-          total_ritual: string
+          total_arc: string
           trader_address: string
           tx_hash: string | null
           type: string
@@ -155,7 +155,7 @@ export type Database = {
           id?: string
           price?: string
           token_address: string
-          total_ritual?: string
+          total_arc?: string
           trader_address: string
           tx_hash?: string | null
           type: string
@@ -166,7 +166,7 @@ export type Database = {
           id?: string
           price?: string
           token_address?: string
-          total_ritual?: string
+          total_arc?: string
           trader_address?: string
           tx_hash?: string | null
           type?: string
