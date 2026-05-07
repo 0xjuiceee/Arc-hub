@@ -1,12 +1,12 @@
 export const ARC_CHAIN = {
-  chainId: 42019,
-  chainIdHex: '0xA423',
-  name: 'Arc Network Testnet',
-  currency: { name: 'aUSD', symbol: 'aUSD', decimals: 18 },
+  chainId: 5042002,
+  chainIdHex: '0x4CECD2',
+  name: 'Arc Testnet',
+  currency: { name: 'USDC', symbol: 'USDC', decimals: 18 },
   rpcUrl: 'https://rpc.testnet.arc.network',
-  wsUrl: 'wss://rpc.testnet.arc.network/ws',
-  explorerUrl: 'https://explorer.testnet.arc.network',
-  faucetUrl: 'https://faucet.testnet.arc.network',
+  wsUrl: 'wss://rpc.testnet.arc.network',
+  explorerUrl: 'https://testnet.arcscan.app',
+  faucetUrl: 'https://faucet.circle.com',
 } as const;
 
 export const getExplorerTxUrl = (h: string) => `${ARC_CHAIN.explorerUrl}/tx/${h}`;
