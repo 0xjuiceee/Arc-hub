@@ -1,6 +1,6 @@
 import { Wallet, Zap, LogOut, ExternalLink } from 'lucide-react';
 import { useWallet } from '@/contexts/WalletContext';
-import { shortenAddress, formatRitual, RITUAL_CHAIN } from '@/lib/ritual-chain';
+import { shortenAddress, formatRitual, ARC_CHAIN } from '@/lib/arc-chain';
 
 export const WalletButton = () => {
   const { isConnected, isCorrectChain, address, balance, connect, disconnect, switchToRitual } = useWallet();
@@ -32,7 +32,7 @@ export const WalletButton = () => {
   return (
     <div className="flex items-center gap-2">
       <a
-        href={RITUAL_CHAIN.faucetUrl}
+        href={ARC_CHAIN.faucetUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="hidden sm:flex text-xs font-mono text-muted-foreground hover:text-primary transition-colors items-center gap-1"
@@ -41,7 +41,7 @@ export const WalletButton = () => {
       </a>
       <div className="px-2.5 py-1.5 rounded-md bg-secondary border border-border font-mono text-xs">
         <span className="text-green-400">{formatRitual(balance, 3)}</span>
-        <span className="text-muted-foreground ml-1">RITUAL</span>
+        <span className="text-muted-foreground ml-1">aUSD</span>
       </div>
       <button
         className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md border border-border bg-secondary text-xs font-mono hover:border-primary/40 transition-all"

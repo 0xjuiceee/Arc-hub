@@ -351,7 +351,7 @@ export const TradingChart = ({ data, trades = [] }: TradingChartProps) => {
         <div className="ml-auto flex items-center gap-1.5">
           <span className={`w-2 h-2 rounded-full ${isUp ? 'bg-green-500' : 'bg-red-500'}`} />
           <span className={`text-xs font-mono ${isUp ? 'text-green-400' : 'text-red-400'}`}>
-            {fmtVal(lastValue)} {mode === 'price' ? 'RITUAL' : 'MCap'}
+            {fmtVal(lastValue)} {mode === 'price' ? 'aUSD' : 'MCap'}
           </span>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Zap, Users, BarChart3, Clock } from 'lucide-react';
-import { formatRitual, shortenAddress } from '@/lib/ritual-chain';
+import { formatRitual, shortenAddress } from '@/lib/arc-chain';
 
 export interface TokenCardData {
   id: string;

@@ -159,7 +159,7 @@ export const TradingPanel = ({
   const displayBalance = mode === 'sell'
     ? parseFloat(tokenBalance).toFixed(2)
     : parseFloat(ritualBalance).toFixed(4);
-  const balanceUnit = mode === 'sell' ? tokenTicker : 'RITUAL';
+  const balanceUnit = mode === 'sell' ? tokenTicker : 'aUSD';
 
   return (
     <div className="rounded-xl bg-card border border-border p-5">
@@ -203,7 +203,7 @@ export const TradingPanel = ({
             className="w-full bg-secondary border border-border rounded-lg px-4 py-3 font-mono text-foreground text-base focus:outline-none focus:border-primary transition-colors pr-20"
           />
           <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted-foreground">
-            {mode === 'buy' ? 'RITUAL' : tokenTicker}
+            {mode === 'buy' ? 'aUSD' : tokenTicker}
           </span>
         </div>
 
@@ -237,7 +237,7 @@ export const TradingPanel = ({
           <div className="flex items-center justify-between text-xs px-1">
             <span className="text-muted-foreground">Expected</span>
             <span className="text-primary font-mono">
-              {expected} {mode === 'buy' ? tokenTicker : 'RITUAL'}
+              {expected} {mode === 'buy' ? tokenTicker : 'aUSD'}
             </span>
           </div>
         )}

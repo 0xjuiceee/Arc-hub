@@ -3,7 +3,7 @@ import { Rocket, PlusCircle, Briefcase, Menu, X } from 'lucide-react';
 import { WalletButton } from './WalletButton';
 import { LiveTicker } from './LiveTicker';
 import { useState } from 'react';
-import logoImg from '@/assets/logo.png';
+import logoImg from '@/assets/arc-logo.png';
 
 const navItems = [
   { path: '/terminal', label: 'Terminal', icon: Rocket },
@@ -21,7 +21,7 @@ export const Header = () => {
           {/* Left: Logo + Nav */}
           <div className="flex items-center gap-6">
             <Link to="/terminal" className="flex items-center gap-2 group">
-              <img src={logoImg} alt="RitualPad" className="w-7 h-7 rounded-lg object-cover" />
+              <img src={logoImg} alt="Arc-hub" className="w-7 h-7 rounded-lg object-cover" />
               <span className="font-bold text-lg text-foreground">
                 Ritual<span className="text-primary">Pad</span>
               </span>

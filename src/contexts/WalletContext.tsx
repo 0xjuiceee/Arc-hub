@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { ethers } from 'ethers';
-import { RITUAL_CHAIN } from '@/lib/ritual-chain';
+import { ARC_CHAIN } from '@/lib/arc-chain';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const getEthereum = (): any => (window as any).ethereum;
@@ -68,7 +68,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       balance: '0',
       chainId,
       isConnected: true,
-      isCorrectChain: chainId === RITUAL_CHAIN.chainId,
+      isCorrectChain: chainId === ARC_CHAIN.chainId,
       provider,
       signer,
     });
@@ -94,18 +94,18 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     try {
       await ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: RITUAL_CHAIN.chainIdHex }],
+        params: [{ chainId: ARC_CHAIN.chainIdHex }],
       });
     } catch (err: any) {
       if (err.code === 4902) {
         await ethereum.request({
           method: 'wallet_addEthereumChain',
           params: [{
-            chainId: RITUAL_CHAIN.chainIdHex,
-            chainName: RITUAL_CHAIN.name,
-            nativeCurrency: RITUAL_CHAIN.currency,
-            rpcUrls: [RITUAL_CHAIN.rpcUrl],
-            blockExplorerUrls: [RITUAL_CHAIN.explorerUrl],
+            chainId: ARC_CHAIN.chainIdHex,
+            chainName: ARC_CHAIN.name,
+            nativeCurrency: ARC_CHAIN.currency,
+            rpcUrls: [ARC_CHAIN.rpcUrl],
+            blockExplorerUrls: [ARC_CHAIN.explorerUrl],
           }],
         });
       }
