@@ -25,7 +25,7 @@ export const TokenCard = ({ token, index = 0 }: { token: TokenCardData; index?: 
 
   return (
     <Link
-      to={`/token/${token.address}`}
+      to="/token/$address" params={{ address: token.address }}
       className="block rounded-xl bg-card border border-border hover:border-primary/40 transition-all group overflow-hidden animate-card-enter"
       style={{ animationDelay: `${index * 60}ms` }}
     >

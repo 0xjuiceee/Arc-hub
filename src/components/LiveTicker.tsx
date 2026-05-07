@@ -59,7 +59,7 @@ export const LiveTicker = () => {
         {duplicated.map((trade, i) => (
           <Link
             key={`${trade.id}-${i}`}
-            to={`/token/${trade.token_address}`}
+            to="/token/$address" params={{ address: trade.token_address }}
             className="flex items-center gap-1.5 text-xs font-mono hover:opacity-80 transition-opacity px-2"
           >
             <span className="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-[10px]">
