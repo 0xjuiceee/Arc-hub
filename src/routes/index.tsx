@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
   Zap, Rocket, Shield, TrendingUp, ArrowUpRight,
-  Sparkles, Layers, Coins, Activity, ChevronRight, Globe,
+  Sparkles, Layers, Coins, Activity, ChevronRight, Globe, Bird,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
