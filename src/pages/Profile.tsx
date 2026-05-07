@@ -47,7 +47,7 @@ const Profile = () => {
     if (!address) return;
     navigator.clipboard.writeText(address);
     setCopied(true);
-    toast({ title: 'Address copied!' });
+    toast.success("");
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -311,7 +311,7 @@ function EditProfileDialog({
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 5 * 1024 * 1024) {
-      toast({ title: 'File too large', description: 'Max 5MB', variant: 'destructive' });
+      toast.error('File too large');
       return;
     }
     setSelectedFile(file);
@@ -349,11 +349,11 @@ function EditProfileDialog({
         });
       if (error) throw error;
 
-      toast({ title: 'Profile updated!' });
+      toast.success("");
       onSaved();
       onOpenChange(false);
     } catch (err: any) {
-      toast({ title: 'Error saving profile', description: err.message, variant: 'destructive' });
+      toast.error('Error saving profile');
     } finally {
       setSaving(false);
     }

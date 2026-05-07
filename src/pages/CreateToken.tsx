@@ -36,11 +36,11 @@ const CreateToken = () => {
 
   const handleImageSelect = (file: File) => {
     if (file.size > 5 * 1024 * 1024) {
-      toast({ title: 'File too large', description: 'Max 5MB allowed', variant: 'destructive' });
+      toast.error('File too large');
       return;
     }
     if (!file.type.startsWith('image/')) {
-      toast({ title: 'Invalid file', description: 'Only images allowed', variant: 'destructive' });
+      toast.error('Invalid file');
       return;
     }
     setImageFile(file);
@@ -58,7 +58,7 @@ const CreateToken = () => {
     if (!signer || !address || !name || !ticker) return;
 
     if (name.length > 50 || ticker.length > 10) {
-      toast({ title: 'Invalid input', description: 'Name max 50 chars, ticker max 10', variant: 'destructive' });
+      toast.error('Invalid input');
       return;
     }
 
@@ -69,7 +69,7 @@ const CreateToken = () => {
       if (!isFactoryReady) {
         setStep('deploying-factory');
         currentFactory = await deployFactory(signer);
-        toast({ title: '✅ Factory deployed!', description: 'Now creating your token...' });
+        toast.success('✅ Factory deployed!');
       }
 
       // Step 2: Create token via factory
@@ -134,11 +134,7 @@ const CreateToken = () => {
 
       navigate({ to: "/token/$address", params: { address: tokenAddress } });
     } catch (err: any) {
-      toast({
-        title: 'Deployment Failed',
-        description: err.message?.slice(0, 120) || 'Unknown error',
-        variant: 'destructive',
-      });
+      toast.error('Deployment Failed', { description: err.message?.slice(0, 120) || 'Unknown error' });
     } finally {
       setLoading(false);
       setStep('idle');

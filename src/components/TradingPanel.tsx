@@ -138,11 +138,7 @@ export const TradingPanel = ({
       setAmount('');
       onTradeComplete();
     } catch (err: any) {
-      toast({
-        title: 'Transaction Failed',
-        description: err.message?.slice(0, 100) || 'Unknown error',
-        variant: 'destructive',
-      });
+      toast.error('Transaction Failed', { description: err.message?.slice(0, 100) || 'Unknown error' });
     } finally {
       setLoading(false);
     }
