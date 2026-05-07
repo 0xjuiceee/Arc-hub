@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import {
-  Zap, Rocket, Shield, TrendingUp, ArrowUpRight, Twitter,
-  Sparkles, Layers, Coins, Activity, ChevronRight, Globe,
+  Zap, Rocket, Shield, TrendingUp, ArrowUpRight,
+  Sparkles, Layers, Coins, Activity, ChevronRight, Globe, Bird,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -383,7 +383,7 @@ function Footer() {
             className="w-7 h-7 rounded-full flex items-center justify-center"
             style={{ background: "var(--gradient-arc)" }}
           >
-            <Twitter className="w-3.5 h-3.5 text-primary-foreground" />
+            <Bird className="w-3.5 h-3.5 text-primary-foreground" />
           </span>
           <span className="text-sm">
             Built by{" "}
