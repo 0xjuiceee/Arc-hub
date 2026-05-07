@@ -14,7 +14,165 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      config: {
+        Row: {
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value?: string
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      price_snapshots: {
+        Row: {
+          created_at: string
+          id: string
+          market_cap: string
+          price: string
+          token_address: string
+          total_supply: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          market_cap?: string
+          price: string
+          token_address: string
+          total_supply?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          market_cap?: string
+          price?: string
+          token_address?: string
+          total_supply?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          display_name: string | null
+          updated_at: string
+          wallet_address: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          display_name?: string | null
+          updated_at?: string
+          wallet_address: string
+        }
+        Update: {
+          avatar_url?: string | null
+          display_name?: string | null
+          updated_at?: string
+          wallet_address?: string
+        }
+        Relationships: []
+      }
+      tokens: {
+        Row: {
+          address: string
+          base_price: string
+          bonding_curve_address: string | null
+          created_at: string
+          creator_address: string
+          current_price: string
+          description: string | null
+          id: string
+          image_url: string | null
+          market_cap: string
+          name: string
+          slope: string
+          ticker: string
+          total_supply: string
+          total_trades: number
+          volume_24h: string
+        }
+        Insert: {
+          address: string
+          base_price?: string
+          bonding_curve_address?: string | null
+          created_at?: string
+          creator_address: string
+          current_price?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          market_cap?: string
+          name: string
+          slope?: string
+          ticker: string
+          total_supply?: string
+          total_trades?: number
+          volume_24h?: string
+        }
+        Update: {
+          address?: string
+          base_price?: string
+          bonding_curve_address?: string | null
+          created_at?: string
+          creator_address?: string
+          current_price?: string
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          market_cap?: string
+          name?: string
+          slope?: string
+          ticker?: string
+          total_supply?: string
+          total_trades?: number
+          volume_24h?: string
+        }
+        Relationships: []
+      }
+      trades: {
+        Row: {
+          amount_tokens: string
+          created_at: string
+          id: string
+          price: string
+          token_address: string
+          total_ritual: string
+          trader_address: string
+          tx_hash: string | null
+          type: string
+        }
+        Insert: {
+          amount_tokens?: string
+          created_at?: string
+          id?: string
+          price?: string
+          token_address: string
+          total_ritual?: string
+          trader_address: string
+          tx_hash?: string | null
+          type: string
+        }
+        Update: {
+          amount_tokens?: string
+          created_at?: string
+          id?: string
+          price?: string
+          token_address?: string
+          total_ritual?: string
+          trader_address?: string
+          tx_hash?: string | null
+          type?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
