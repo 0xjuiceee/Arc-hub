@@ -3,7 +3,7 @@ import { useWallet } from '@/contexts/WalletContext';
 import { shortenAddress, formatRitual, ARC_CHAIN } from '@/lib/arc-chain';
 
 export const WalletButton = () => {
-  const { isConnected, isCorrectChain, address, balance, connect, disconnect, switchToRitual } = useWallet();
+  const { isConnected, isCorrectChain, address, balance, connect, disconnect, switchToArc } = useWallet();
 
   if (!isConnected) {
     return (
@@ -20,11 +20,11 @@ export const WalletButton = () => {
   if (!isCorrectChain) {
     return (
       <button
-        onClick={switchToRitual}
+        onClick={switchToArc}
         className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-destructive text-destructive-foreground text-sm font-medium"
       >
         <Zap className="w-4 h-4" />
-        Switch to Ritual
+        Switch to Arc
       </button>
     );
   }

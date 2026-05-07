@@ -390,7 +390,7 @@ const TokenDetail = () => {
                         <th className="text-left px-4 py-2.5">Account</th>
                         <th className="text-left px-4 py-2.5">Type</th>
                         <th className="text-right px-4 py-2.5">Value</th>
-                        <th className="text-right px-4 py-2.5">Amount (RITUAL)</th>
+                        <th className="text-right px-4 py-2.5">Amount (aUSD)</th>
                         <th className="text-right px-4 py-2.5">Amount ({token.ticker})</th>
                         <th className="text-right px-4 py-2.5">Time</th>
                         <th className="text-right px-4 py-2.5">Tx</th>
@@ -559,7 +559,7 @@ const TokenDetail = () => {
                 )}
               </div>
               <p className="text-xs text-muted-foreground leading-relaxed">
-                {token.description || `${token.name} — a memecoin on Ritual Chain`}
+                {token.description || `${token.name} — a memecoin on Arc Network`}
               </p>
             </div>
 
