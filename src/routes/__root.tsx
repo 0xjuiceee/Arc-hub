@@ -4,11 +4,17 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { WalletProvider } from "@/contexts/WalletContext";
+import { Header } from "@/components/Header";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 function NotFoundComponent() {
   return (
@@ -72,11 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Voltara — Arc Testnet Launchpad" },
-      { name: "description", content: "Voltara is the premier launchpad for projects on the Arc Network testnet. Discover, fund, and launch the next wave of stablecoin-native dApps." },
+      { title: "Arc-hub — Memecoin Launchpad on Arc Network" },
+      { name: "description", content: "Arc-hub is the memecoin terminal for Arc Network testnet. Launch tokens, trade with bonding curves, fully on-chain." },
       { name: "author", content: "0xjuiceee" },
-      { property: "og:title", content: "Voltara — Arc Testnet Launchpad" },
-      { property: "og:description", content: "The premier launchpad on Arc Network testnet. Built by 0xjuiceee." },
+      { property: "og:title", content: "Arc-hub — Memecoin Launchpad on Arc" },
+      { property: "og:description", content: "Launch and trade memecoins on Arc Network testnet." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@0xjuiceee" },
@@ -111,10 +117,21 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isLanding = pathname === "/";
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <TooltipProvider>
+        <WalletProvider>
+          <div className="min-h-screen bg-background">
+            {!isLanding && <Header />}
+            <Outlet />
+          </div>
+          <Toaster />
+          <Sonner />
+        </WalletProvider>
+      </TooltipProvider>
     </QueryClientProvider>
   );
 }
