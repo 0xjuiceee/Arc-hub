@@ -1,10 +1,10 @@
+import { toast } from 'sonner';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useWallet } from '@/contexts/WalletContext';
 import { ethers } from 'ethers';
 import { MEMETOKEN_ABI, readTokenOnChainData } from '@/lib/contracts';
 import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowUpDown } from 'lucide-react';
 
 interface TradingPanelProps {
@@ -29,7 +29,6 @@ export const TradingPanel = ({
   const [tokenBalance, setTokenBalance] = useState('0');
   const [ritualBalance, setRitualBalance] = useState('0');
   const { signer, address, isConnected, isCorrectChain, provider } = useWallet();
-  const { toast } = useToast();
 
   // Fetch balances
   useEffect(() => {
@@ -109,8 +108,7 @@ export const TradingPanel = ({
         }
 
         await syncOnChainData(contract, receipt.hash, 'buy', tokensBought, amount);
-        toast({
-          title: '🎉 Buy Successful!',
+        toast.success('🎉 Buy Successful!', {
           description: `Bought ${tokensBought} ${tokenTicker} for ${amount} aUSD`,
         });
       } else {
@@ -130,8 +128,7 @@ export const TradingPanel = ({
         }
 
         await syncOnChainData(contract, receipt.hash, 'sell', amount, ritualReceived);
-        toast({
-          title: '💰 Sell Successful!',
+        toast.success('💰 Sell Successful!', {
           description: `Sold ${amount} ${tokenTicker} for ${ritualReceived} aUSD`,
         });
       }
@@ -139,11 +136,7 @@ export const TradingPanel = ({
       setAmount('');
       onTradeComplete();
     } catch (err: any) {
-      toast({
-        title: 'Transaction Failed',
-        description: err.message?.slice(0, 100) || 'Unknown error',
-        variant: 'destructive',
-      });
+      toast.error('Transaction Failed', { description: err.message?.slice(0, 100) || 'Unknown error' });
     } finally {
       setLoading(false);
     }

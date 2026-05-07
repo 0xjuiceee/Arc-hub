@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { useState, useRef } from 'react';
 import { useParams, Link } from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
@@ -9,7 +10,6 @@ import { MEMETOKEN_ABI, readTokenOnChainData } from '@/lib/contracts';
 import { useWallet } from '@/contexts/WalletContext';
 import { ethers } from 'ethers';
 import { ExternalLink, Copy, ArrowLeft, Share2, Zap, Flame, BarChart3, Info, Clock, Camera, Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
 
 function addressToHue(addr: string): number {
   let hash = 0;
@@ -23,7 +23,6 @@ type TradeTab = 'trades' | 'holders';
 
 const TokenDetail = () => {
   const { address } = useParams({ strict: false }) as { address: string };
-  const { toast } = useToast();
   const { provider, isConnected, isCorrectChain, address: walletAddress } = useWallet();
   const [tradeTab, setTradeTab] = useState<TradeTab>('trades');
   const [uploadingImage, setUploadingImage] = useState(false);
@@ -165,11 +164,11 @@ const TokenDetail = () => {
   const handleImageUpload = async (file: File) => {
     if (!token || !address) return;
     if (file.size > 5 * 1024 * 1024) {
-      toast({ title: 'File too large', description: 'Max 5MB allowed', variant: 'destructive' });
+      toast.error('File too large');
       return;
     }
     if (!file.type.startsWith('image/')) {
-      toast({ title: 'Invalid file', description: 'Only images allowed', variant: 'destructive' });
+      toast.error('Invalid file');
       return;
     }
     setUploadingImage(true);
@@ -188,9 +187,9 @@ const TokenDetail = () => {
         .eq('address', address);
       if (updateErr) throw updateErr;
       refetchToken();
-      toast({ title: '✅ Token image updated!' });
+      toast.success("");
     } catch (err: any) {
-      toast({ title: 'Upload failed', description: err.message?.slice(0, 100), variant: 'destructive' });
+      toast.error('Upload failed');
     } finally {
       setUploadingImage(false);
     }
@@ -198,12 +197,12 @@ const TokenDetail = () => {
 
   const copyAddress = () => {
     navigator.clipboard.writeText(address!);
-    toast({ title: 'Address copied!' });
+    toast.success("");
   };
 
   const shareToken = () => {
     navigator.clipboard.writeText(window.location.href);
-    toast({ title: 'Link copied!' });
+    toast.success("");
   };
 
   const timeAgo = (date: string) => {
@@ -512,7 +511,7 @@ const TokenDetail = () => {
               <span className="text-xs text-muted-foreground">Contract Address</span>
               <div className="flex items-center gap-1.5">
                 <span className="text-xs font-mono text-foreground">{shortenAddress(token.address, 4)}</span>
-                <button onClick={() => { navigator.clipboard.writeText(token.address); toast({ title: 'Copied!' }); }} className="text-muted-foreground hover:text-primary transition-colors">
+                <button onClick={() => { navigator.clipboard.writeText(token.address); toast.success(""); }} className="text-muted-foreground hover:text-primary transition-colors">
                   <Copy className="w-3 h-3" />
                 </button>
               </div>
@@ -526,7 +525,7 @@ const TokenDetail = () => {
                   {token.bonding_curve_address ? shortenAddress(token.bonding_curve_address, 4) : '—'}
                 </span>
                 {token.bonding_curve_address && (
-                  <button onClick={() => { navigator.clipboard.writeText(token.bonding_curve_address!); toast({ title: 'Copied!' }); }} className="text-muted-foreground hover:text-primary transition-colors">
+                  <button onClick={() => { navigator.clipboard.writeText(token.bonding_curve_address!); toast.success(""); }} className="text-muted-foreground hover:text-primary transition-colors">
                     <Copy className="w-3 h-3" />
                   </button>
                 )}
