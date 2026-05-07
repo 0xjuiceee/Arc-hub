@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import { Zap, Users, BarChart3, Clock } from 'lucide-react';
 import { formatRitual, shortenAddress } from '@/lib/arc-chain';
 

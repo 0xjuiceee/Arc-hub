@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from '@tanstack/react-router';
 import { Rocket, PlusCircle, Briefcase, Menu, X } from 'lucide-react';
 import { WalletButton } from './WalletButton';
 import { LiveTicker } from './LiveTicker';
