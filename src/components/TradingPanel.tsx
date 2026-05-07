@@ -108,8 +108,7 @@ export const TradingPanel = ({
         }
 
         await syncOnChainData(contract, receipt.hash, 'buy', tokensBought, amount);
-        toast({
-          title: '🎉 Buy Successful!',
+        toast.success('🎉 Buy Successful!', {
           description: `Bought ${tokensBought} ${tokenTicker} for ${amount} aUSD`,
         });
       } else {
@@ -129,8 +128,7 @@ export const TradingPanel = ({
         }
 
         await syncOnChainData(contract, receipt.hash, 'sell', amount, ritualReceived);
-        toast({
-          title: '💰 Sell Successful!',
+        toast.success('💰 Sell Successful!', {
           description: `Sold ${amount} ${tokenTicker} for ${ritualReceived} aUSD`,
         });
       }
