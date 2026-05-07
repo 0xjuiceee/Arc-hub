@@ -1,10 +1,10 @@
+import { toast } from 'sonner';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useWallet } from '@/contexts/WalletContext';
 import { ethers } from 'ethers';
 import { MEMETOKEN_ABI, readTokenOnChainData } from '@/lib/contracts';
 import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
 import { Loader2, ArrowUpDown } from 'lucide-react';
 
 interface TradingPanelProps {
@@ -29,7 +29,6 @@ export const TradingPanel = ({
   const [tokenBalance, setTokenBalance] = useState('0');
   const [ritualBalance, setRitualBalance] = useState('0');
   const { signer, address, isConnected, isCorrectChain, provider } = useWallet();
-  const { toast } = useToast();
 
   // Fetch balances
   useEffect(() => {

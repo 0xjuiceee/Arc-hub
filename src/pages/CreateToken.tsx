@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { useState, useRef } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { ethers } from 'ethers';
@@ -5,7 +6,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useWallet } from '@/contexts/WalletContext';
-import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { FACTORY_ABI, DEFAULT_BASE_PRICE, DEFAULT_SLOPE } from '@/lib/contracts';
 import { useFactoryAddress } from '@/hooks/useFactoryAddress';
@@ -31,7 +31,6 @@ const CreateToken = () => {
   const [step, setStep] = useState<DeployStep>('idle');
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { signer, address, isConnected, isCorrectChain } = useWallet();
-  const { toast } = useToast();
   const navigate = useNavigate();
   const { factoryAddress, isFactoryReady, deployFactory } = useFactoryAddress();
 

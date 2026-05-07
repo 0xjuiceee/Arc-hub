@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { useState, useRef } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
@@ -7,7 +8,6 @@ import { ethers } from 'ethers';
 import { MEMETOKEN_ABI } from '@/lib/contracts';
 import { Wallet, Copy, Check, ExternalLink, Camera, X, Loader2 } from 'lucide-react';
 import { shortenAddress, getExplorerTxUrl } from '@/lib/arc-chain';
-import { useToast } from '@/hooks/use-toast';
 import {
   Dialog,
   DialogContent,
@@ -41,7 +41,6 @@ const Profile = () => {
   const [activeTab, setActiveTab] = useState<Tab>('holdings');
   const [copied, setCopied] = useState(false);
   const [editOpen, setEditOpen] = useState(false);
-  const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const copyAddress = () => {
@@ -297,7 +296,6 @@ function EditProfileDialog({
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [saving, setSaving] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
-  const { toast } = useToast();
 
   // Sync state when dialog opens
   const handleOpenChange = (v: boolean) => {

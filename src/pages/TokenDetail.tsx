@@ -1,3 +1,4 @@
+import { toast } from 'sonner';
 import { useState, useRef } from 'react';
 import { useParams, Link } from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
@@ -9,7 +10,6 @@ import { MEMETOKEN_ABI, readTokenOnChainData } from '@/lib/contracts';
 import { useWallet } from '@/contexts/WalletContext';
 import { ethers } from 'ethers';
 import { ExternalLink, Copy, ArrowLeft, Share2, Zap, Flame, BarChart3, Info, Clock, Camera, Loader2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
 
 function addressToHue(addr: string): number {
   let hash = 0;
@@ -23,7 +23,6 @@ type TradeTab = 'trades' | 'holders';
 
 const TokenDetail = () => {
   const { address } = useParams({ strict: false }) as { address: string };
-  const { toast } = useToast();
   const { provider, isConnected, isCorrectChain, address: walletAddress } = useWallet();
   const [tradeTab, setTradeTab] = useState<TradeTab>('trades');
   const [uploadingImage, setUploadingImage] = useState(false);
