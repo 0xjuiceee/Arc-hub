@@ -1,5 +1,5 @@
 // ============================================================
-// RitualPad — Contract interfaces for Factory + MemeToken
+// Arc-hub — Contract interfaces for Factory + MemeToken
 // ============================================================
 // The Factory contract is deployed via Remix IDE and referenced
 // here by address. Each MemeToken is an ERC20 with a linear
@@ -85,8 +85,8 @@ export const calculateCurrentPrice = (
 };
 
 // Default bonding curve params (must match the Solidity contract)
-export const DEFAULT_BASE_PRICE = BigInt("100000000000000"); // 0.0001 RITUAL
-export const DEFAULT_SLOPE = BigInt("1000000000000");       // 0.000001 RITUAL per token
+export const DEFAULT_BASE_PRICE = BigInt("100000000000000"); // 0.0001 aUSD
+export const DEFAULT_SLOPE = BigInt("1000000000000");       // 0.000001 aUSD per token
 
 // ─── HELPER: read on-chain state and return formatted values ─
 

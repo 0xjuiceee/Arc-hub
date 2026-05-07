@@ -7,7 +7,7 @@ const features = [
   {
     icon: Rocket,
     title: 'Launch Tokens',
-    desc: 'Create and deploy your own memecoin on Ritual Chain in seconds.',
+    desc: 'Create and deploy your own memecoin on Arc Network in seconds.',
   },
   {
     icon: TrendingUp,
@@ -17,7 +17,7 @@ const features = [
   {
     icon: Zap,
     title: 'Instant Trades',
-    desc: 'Buy and sell tokens instantly with low gas fees on Ritual Chain.',
+    desc: 'Buy and sell tokens instantly with low gas fees on Arc Network.',
   },
   {
     icon: Shield,
@@ -199,7 +199,7 @@ const Landing = () => {
         <div className="flex items-center gap-2">
           <img src={logoImg} alt="Arc-hub" className="h-8 w-8 rounded-lg object-cover" />
           <span className="text-xl font-bold text-foreground">
-            Ritual<span className="text-primary">Pad</span>
+            <span className="text-primary">Arc</span>-hub
           </span>
         </div>
         <Link
@@ -213,13 +213,13 @@ const Landing = () => {
       <main className="relative z-10 flex flex-col items-center justify-center px-6 pb-20 pt-16 text-center md:pt-28">
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary">
           <Zap className="h-3.5 w-3.5" />
-          Powered by Ritual Chain
+          Powered by Arc Network
         </div>
 
         <h1 className="mb-6 max-w-4xl text-4xl font-bold leading-tight text-foreground sm:text-5xl md:text-7xl">
           The Memecoin Terminal
           <br />
-          <span className="text-glow text-primary">for Ritual Chain</span>
+          <span className="text-glow text-primary">for Arc Network</span>
         </h1>
 
         <p className="mb-10 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
@@ -262,7 +262,7 @@ const Landing = () => {
       </section>
 
       <footer className="relative z-10 border-t border-border py-6 text-center">
-        <p className="text-xs text-muted-foreground">© 2026 Arc-hub — Built on Ritual Chain Testnet</p>
+        <p className="text-xs text-muted-foreground">© 2026 Arc-hub — Built on Arc Network Testnet</p>
       </footer>
     </div>
   );

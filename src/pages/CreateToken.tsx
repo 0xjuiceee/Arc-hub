@@ -16,7 +16,7 @@ type DeployStep = 'idle' | 'deploying-factory' | 'creating-token' | 'uploading-i
 const stepLabels: Record<DeployStep, string> = {
   idle: '',
   'deploying-factory': 'Deploying Factory (first time only)...',
-  'creating-token': 'Creating Token on Ritual...',
+  'creating-token': 'Creating Token on Arc...',
   'uploading-image': 'Uploading Image...',
   saving: 'Saving to Arc-hub...',
 };
@@ -147,14 +147,14 @@ const CreateToken = () => {
           <Rocket className="w-8 h-8 text-primary" />
         </div>
         <h1 className="text-3xl font-bold text-foreground">Launch Token</h1>
-        <p className="text-muted-foreground mt-2">Deploy your memecoin in one click on Ritual testnet</p>
+        <p className="text-muted-foreground mt-2">Deploy your memecoin in one click on Arc testnet</p>
       </div>
 
       <div className="rounded-xl bg-card border border-border p-6 space-y-5">
         <div>
           <label className="text-sm text-muted-foreground mb-1.5 block">Token Name *</label>
           <Input
-            placeholder="e.g. RitualDoge"
+            placeholder="e.g. ArcDoge"
             value={name}
             onChange={e => setName(e.target.value)}
             maxLength={50}
@@ -230,7 +230,7 @@ const CreateToken = () => {
           <div className="grid grid-cols-2 gap-3 text-xs font-mono">
             <div>
               <span className="text-muted-foreground">Base Price:</span>
-              <span className="text-foreground ml-1">0.0001 RITUAL</span>
+              <span className="text-foreground ml-1">0.0001 aUSD</span>
             </div>
             <div>
               <span className="text-muted-foreground">Slope:</span>

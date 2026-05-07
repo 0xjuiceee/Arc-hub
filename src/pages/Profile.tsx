@@ -459,7 +459,7 @@ function HoldingsTab({ holdings, isLoading }: { holdings: any[]; isLoading: bool
                 <td className="px-5 py-3">
                   <span className="text-xs font-mono px-2 py-0.5 rounded bg-primary/10 text-primary">Active</span>
                 </td>
-                <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(h.market_cap).toFixed(4)} RITUAL</td>
+                <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(h.market_cap).toFixed(4)} aUSD</td>
                 <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(h.onChainBalance) > 0 ? parseFloat(h.onChainBalance).toFixed(2) : '0'}</td>
               </tr>
             ))
@@ -499,7 +499,7 @@ function CreatedTokensTab({ tokens, isLoading }: { tokens: any[]; isLoading: boo
                 <td className="px-5 py-3">
                   <span className="text-xs font-mono px-2 py-0.5 rounded bg-primary/10 text-primary">Active</span>
                 </td>
-                <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(t.market_cap).toFixed(4)} RITUAL</td>
+                <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(t.market_cap).toFixed(4)} aUSD</td>
                 <td className="px-5 py-3 text-right font-mono text-sm">{t.total_trades}</td>
               </tr>
             ))
@@ -546,7 +546,7 @@ function TradeHistoryTab({ trades, tokenMap, isLoading }: { trades: any[]; token
                   </td>
                   <td className="px-5 py-3 text-right font-mono text-sm">{trade.amount_tokens}</td>
                   <td className="px-5 py-3 text-right font-mono text-sm">{parseFloat(trade.price).toFixed(8)}</td>
-                  <td className="px-5 py-3 text-right font-mono text-sm">{trade.total_ritual} RITUAL</td>
+                  <td className="px-5 py-3 text-right font-mono text-sm">{trade.total_ritual} aUSD</td>
                   <td className="px-5 py-3 text-right">
                     {trade.tx_hash ? (
                       <a href={getExplorerTxUrl(trade.tx_hash)} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline inline-flex items-center gap-1 text-xs">

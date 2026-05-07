@@ -18,7 +18,7 @@ interface WalletState {
 interface WalletContextType extends WalletState {
   connect: () => Promise<void>;
   disconnect: () => void;
-  switchToRitual: () => Promise<void>;
+  switchToArc: () => Promise<void>;
 }
 
 const WalletContext = createContext<WalletContextType | null>(null);
@@ -88,7 +88,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     });
   }, []);
 
-  const switchToRitual = useCallback(async () => {
+  const switchToArc = useCallback(async () => {
     const ethereum = getEthereum();
     if (!ethereum) return;
     try {
@@ -142,7 +142,7 @@ export const WalletProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   }, [connect]);
 
   return (
-    <WalletContext.Provider value={{ ...state, connect, disconnect, switchToRitual }}>
+    <WalletContext.Provider value={{ ...state, connect, disconnect, switchToArc }}>
       {children}
     </WalletContext.Provider>
   );
