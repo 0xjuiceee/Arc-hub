@@ -127,9 +127,8 @@ const CreateToken = () => {
         image_url,
       });
 
-      toast({
-        title: '🚀 Token Deployed!',
-        description: `${name} ($${ticker.toUpperCase()}) is live on Ritual testnet!`,
+      toast.success('🚀 Token Deployed!', {
+        description: `${name} ($${ticker.toUpperCase()}) is live on Arc testnet!`,
       });
 
       navigate({ to: "/token/$address", params: { address: tokenAddress } });
