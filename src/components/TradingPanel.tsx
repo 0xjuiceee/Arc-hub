@@ -111,7 +111,7 @@ export const TradingPanel = ({
         await syncOnChainData(contract, receipt.hash, 'buy', tokensBought, amount);
         toast({
           title: '🎉 Buy Successful!',
-          description: `Bought ${tokensBought} ${tokenTicker} for ${amount} RITUAL`,
+          description: `Bought ${tokensBought} ${tokenTicker} for ${amount} aUSD`,
         });
       } else {
         const tokenAmount = ethers.parseEther(amount);
@@ -132,7 +132,7 @@ export const TradingPanel = ({
         await syncOnChainData(contract, receipt.hash, 'sell', amount, ritualReceived);
         toast({
           title: '💰 Sell Successful!',
-          description: `Sold ${amount} ${tokenTicker} for ${ritualReceived} RITUAL`,
+          description: `Sold ${amount} ${tokenTicker} for ${ritualReceived} aUSD`,
         });
       }
 
@@ -280,7 +280,7 @@ export const TradingPanel = ({
           {!isConnected
             ? 'Connect Wallet'
             : !isCorrectChain
-            ? 'Switch to Ritual'
+            ? 'Switch to Arc'
             : loading
             ? 'Processing...'
             : `${mode === 'buy' ? 'Buy' : 'Sell'} ${tokenTicker}`
