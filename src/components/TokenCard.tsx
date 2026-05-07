@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { Zap, Users, BarChart3, Clock } from 'lucide-react';
-import { formatRitual, shortenAddress } from '@/lib/arc-chain';
+import { formatArc, shortenAddress } from '@/lib/arc-chain';
 
 export interface TokenCardData {
   id: string;
@@ -66,7 +66,7 @@ export const TokenCard = ({ token, index = 0 }: { token: TokenCardData; index?: 
           </span>
           <span className="flex items-center gap-0.5">
             <BarChart3 className="w-3 h-3" />
-            ${formatRitual(token.volume_24h, 1)}
+            ${formatArc(token.volume_24h, 1)}
           </span>
           <span className="flex items-center gap-0.5">
             <Users className="w-3 h-3" />
@@ -86,11 +86,11 @@ export const TokenCard = ({ token, index = 0 }: { token: TokenCardData; index?: 
         <div className="flex items-center justify-between text-xs font-mono">
           <span>
             <span className="text-muted-foreground">MC </span>
-            <span className="text-foreground font-semibold">${formatRitual(token.market_cap, 1)}</span>
+            <span className="text-foreground font-semibold">${formatArc(token.market_cap, 1)}</span>
           </span>
           <span>
             <span className="text-muted-foreground">ATH </span>
-            <span className="text-foreground">${formatRitual(token.current_price, 4)}</span>
+            <span className="text-foreground">${formatArc(token.current_price, 4)}</span>
           </span>
         </div>
 

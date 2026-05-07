@@ -17,7 +17,7 @@ export interface ChartDataPoint {
 
 export interface ChartTrade {
   time: string;
-  totalRitual: number;
+  totalArc: number;
   type: string;
 }
 

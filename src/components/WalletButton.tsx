@@ -1,6 +1,6 @@
 import { Wallet, Zap, LogOut, ExternalLink } from 'lucide-react';
 import { useWallet } from '@/contexts/WalletContext';
-import { shortenAddress, formatRitual, ARC_CHAIN } from '@/lib/arc-chain';
+import { shortenAddress, formatArc, ARC_CHAIN } from '@/lib/arc-chain';
 
 export const WalletButton = () => {
   const { isConnected, isCorrectChain, address, balance, connect, disconnect, switchToArc } = useWallet();
@@ -40,7 +40,7 @@ export const WalletButton = () => {
         Faucet <ExternalLink className="w-3 h-3" />
       </a>
       <div className="px-2.5 py-1.5 rounded-md bg-secondary border border-border font-mono text-xs">
-        <span className="text-green-400">{formatRitual(balance, 3)}</span>
+        <span className="text-green-400">{formatArc(balance, 3)}</span>
         <span className="text-muted-foreground ml-1">aUSD</span>
       </div>
       <button

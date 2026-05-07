@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { TradingChart } from '@/components/TradingChart';
 import { TradingPanel } from '@/components/TradingPanel';
-import { shortenAddress, getExplorerAddressUrl, getExplorerTxUrl, formatRitual } from '@/lib/arc-chain';
+import { shortenAddress, getExplorerAddressUrl, getExplorerTxUrl, formatArc } from '@/lib/arc-chain';
 import { MEMETOKEN_ABI, readTokenOnChainData } from '@/lib/contracts';
 import { useWallet } from '@/contexts/WalletContext';
 import { ethers } from 'ethers';
@@ -140,8 +140,8 @@ const TokenDetail = () => {
   const tradeStats = (() => {
     const buys = recentTrades.filter(t => t.type === 'buy');
     const sells = recentTrades.filter(t => t.type === 'sell');
-    const buyVol = buys.reduce((s, t) => s + parseFloat(t.total_ritual), 0);
-    const sellVol = sells.reduce((s, t) => s + parseFloat(t.total_ritual), 0);
+    const buyVol = buys.reduce((s, t) => s + parseFloat(t.total_arc), 0);
+    const sellVol = sells.reduce((s, t) => s + parseFloat(t.total_arc), 0);
     const uniqueTraders = new Set(recentTrades.map(t => t.trader_address));
     const uniqueBuyers = new Set(buys.map(t => t.trader_address));
     const uniqueSellers = new Set(sells.map(t => t.trader_address));
@@ -349,7 +349,7 @@ const TokenDetail = () => {
             data={chartData}
             trades={recentTrades.map(t => ({
               time: t.created_at,
-              totalRitual: parseFloat(t.total_ritual),
+              totalArc: parseFloat(t.total_arc),
               type: t.type,
             }))}
           />
@@ -410,10 +410,10 @@ const TokenDetail = () => {
                             </span>
                           </td>
                           <td className="px-4 py-2.5 text-right font-mono text-xs">
-                            {parseFloat(trade.total_ritual).toFixed(4)}
+                            {parseFloat(trade.total_arc).toFixed(4)}
                           </td>
                           <td className="px-4 py-2.5 text-right font-mono text-xs">
-                            {parseFloat(trade.total_ritual).toFixed(4)}
+                            {parseFloat(trade.total_arc).toFixed(4)}
                           </td>
                           <td className="px-4 py-2.5 text-right font-mono text-xs">
                             {parseFloat(trade.amount_tokens).toFixed(2)}
@@ -587,7 +587,7 @@ const TokenDetail = () => {
             </div>
 
             <StatBar label="TXNS" total={tradeStats.txns.toString()} leftLabel="BUYS" leftVal={tradeStats.buys} rightLabel="SELLS" rightVal={tradeStats.sells} />
-            <StatBar label="VOLUME" total={tradeStats.volume.toFixed(2)} leftLabel="BUY VOL" leftVal={tradeStats.buyVol} rightLabel="SELL VOL" rightVal={tradeStats.sellVol} isRitual />
+            <StatBar label="VOLUME" total={tradeStats.volume.toFixed(2)} leftLabel="BUY VOL" leftVal={tradeStats.buyVol} rightLabel="SELL VOL" rightVal={tradeStats.sellVol} isArc />
             <StatBar label="MAKERS" total={tradeStats.makers.toString()} leftLabel="BUYERS" leftVal={tradeStats.buyers} rightLabel="SELLERS" rightVal={tradeStats.sellers} />
           </div>
         </div>
@@ -603,7 +603,7 @@ const StatBar = ({
   leftVal,
   rightLabel,
   rightVal,
-  isRitual,
+  isArc,
 }: {
   label: string;
   total: string;
@@ -611,11 +611,11 @@ const StatBar = ({
   leftVal: number;
   rightLabel: string;
   rightVal: number;
-  isRitual?: boolean;
+  isArc?: boolean;
 }) => {
   const sum = leftVal + rightVal;
   const leftPct = sum > 0 ? (leftVal / sum) * 100 : 50;
-  const fmt = (v: number) => (isRitual ? v.toFixed(2) : v.toString());
+  const fmt = (v: number) => (isArc ? v.toFixed(2) : v.toString());
 
   return (
     <div>
