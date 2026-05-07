@@ -227,12 +227,17 @@ const Landing = () => {
           Fair launches, instant trades, fully on-chain.
         </p>
 
-        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5">
+        <a
+          href="https://x.com/0xjuiceee"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 transition-all hover:border-accent/60 hover:bg-accent/10"
+        >
           <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
           <span className="font-display text-sm italic tracking-wide bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
             build by 0xjuiceee
           </span>
-        </div>
+        </a>
 
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <Link
