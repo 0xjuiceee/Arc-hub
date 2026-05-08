@@ -1,6 +1,6 @@
 export const ARC_CHAIN = {
   chainId: 5042002,
-  chainIdHex: '0x4CECD2',
+  chainIdHex: '0x4CEF52',
   name: 'Arc Testnet',
   currency: { name: 'USDC', symbol: 'USDC', decimals: 18 },
   rpcUrl: 'https://rpc.testnet.arc.network',
